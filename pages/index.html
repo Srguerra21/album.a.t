@@ -49,11 +49,11 @@
       <h2>Adicionar Foto</h2>
       <form id="photoForm" class="form-grid">
         <div class="field">
-          <label for="photoUrl">URL da imagem</label>
+          <label for="photoFile">Escolher imagem</label>
           <input
-            type="url"
-            id="photoUrl"
-            placeholder="Cole o link da imagem"
+            type="file"
+            id="photoFile"
+            accept="image/*"
             required
           />
         </div>
@@ -161,6 +161,7 @@
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/js/script.js"></script>
 </body>
 </html>
