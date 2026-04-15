@@ -497,3 +497,25 @@ body::before {
     height: 70px;
   }
 }
+
+.music-player {
+  margin: 14px 0 12px;
+}
+
+.music-player iframe {
+  width: 100%;
+  min-height: 220px;
+  border: none;
+  border-radius: 14px;
+  background: #000;
+}
+
+.music-player audio {
+  width: 100%;
+}
+
+.music-note {
+  margin: 10px 0 12px;
+  color: var(--text-soft);
+  opacity: 0.9;
+}

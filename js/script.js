@@ -40,14 +40,100 @@ function createPhotoCard(imageUrl, description) {
   return photoCard;
 }
 
-function createMusicCard(title, youtubeUrl) {
+function getYoutubeEmbedUrl(url) {
+  try {
+    const parsedUrl = new URL(url);
+
+    if (
+      parsedUrl.hostname.includes("youtube.com") &&
+      parsedUrl.searchParams.get("v")
+    ) {
+      const videoId = parsedUrl.searchParams.get("v");
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      const videoId = parsedUrl.pathname.replace("/", "").trim();
+      if (videoId) {
+        return `https://www.youtube.com/embed/${videoId}`;
+      }
+    }
+
+    if (
+      parsedUrl.hostname.includes("youtube.com") &&
+      parsedUrl.pathname.includes("/embed/")
+    ) {
+      return url;
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function isDirectAudioUrl(url) {
+  try {
+    const parsedUrl = new URL(url);
+    return /\.(mp3|wav|ogg|m4a|aac|flac)(\?|#|$)/i.test(parsedUrl.pathname + parsedUrl.search);
+  } catch {
+    return false;
+  }
+}
+
+function createMusicCard(title, musicUrl) {
   const musicCard = document.createElement("div");
   musicCard.classList.add("music-card");
 
+  const safeTitle = escapeHtml(title || "");
+  const youtubeEmbedUrl = getYoutubeEmbedUrl(musicUrl);
+  const safeMusicUrl = escapeHtml(musicUrl || "");
+
+  let playerHtml = "";
+
+  if (youtubeEmbedUrl) {
+    playerHtml = `
+      <div class="music-player">
+        <iframe
+          src="${youtubeEmbedUrl}"
+          title="${safeTitle}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <a href="${safeMusicUrl}" target="_blank" rel="noopener noreferrer">
+        Abrir no YouTube
+      </a>
+    `;
+  } else if (isDirectAudioUrl(musicUrl)) {
+    playerHtml = `
+      <div class="music-player">
+        <audio controls preload="none">
+          <source src="${safeMusicUrl}">
+          Seu navegador não suporta áudio.
+        </audio>
+      </div>
+      <a href="${safeMusicUrl}" target="_blank" rel="noopener noreferrer">
+        Abrir link da música
+      </a>
+    `;
+  } else {
+    playerHtml = `
+      <p class="music-note">
+        Este link foi salvo, mas não pode ser reproduzido diretamente no player.
+      </p>
+      <a href="${safeMusicUrl}" target="_blank" rel="noopener noreferrer">
+        Abrir música
+      </a>
+    `;
+  }
+
   musicCard.innerHTML = `
     <div class="music-ornament">✦</div>
-    <h3>${escapeHtml(title || "")}</h3>
-    <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer">Ouvir no YouTube</a>
+    <h3>${safeTitle}</h3>
+    ${playerHtml}
   `;
 
   return musicCard;
