@@ -1,167 +1,270 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Álbum Gótico Romântico</title>
-  <link rel="stylesheet" href="css/sytle.css" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Álbum Gótico Romântico</title>
+
+<link rel="stylesheet" href="css/sytle.css">
+
 </head>
+
+
 <body>
-  <div class="page-ornament top-left"></div>
-  <div class="page-ornament top-right"></div>
-  <div class="page-ornament bottom-left"></div>
-  <div class="page-ornament bottom-right"></div>
 
-  <header class="hero">
-    <div class="hero-frame">
-      <p class="hero-kicker">Memórias eternizadas</p>
-      <h1>Nosso Álbum</h1>
-      <div class="divider"></div>
-      <p class="subtitle">
-        Entre pétalas secas, promessas sussurradas e sombras delicadas,
-        este espaço guarda lembranças, imagens e canções que resistem ao tempo.
-      </p>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="section ornate-panel">
-      <div class="panel-corner tl"></div>
-      <div class="panel-corner tr"></div>
-      <div class="panel-corner bl"></div>
-      <div class="panel-corner br"></div>
+<div class="page-ornament top-left"></div>
+<div class="page-ornament top-right"></div>
+<div class="page-ornament bottom-left"></div>
+<div class="page-ornament bottom-right"></div>
 
-      <h2>Sobre este relicário</h2>
-      <p>
-        Este álbum foi criado como um pequeno santuário de recordações.
-        Aqui, cada fotografia recebe suas próprias palavras, como se fosse uma
-        página arrancada de uma carta antiga. E cada canção adicionada ecoa como
-        trilha sonora de um romance envolto em névoa, veludo e eternidade.
-      </p>
-    </section>
 
-    <section class="section ornate-panel">
-      <div class="panel-corner tl"></div>
-      <div class="panel-corner tr"></div>
-      <div class="panel-corner bl"></div>
-      <div class="panel-corner br"></div>
 
-      <h2>Adicionar Foto</h2>
-      <form id="photoForm" class="form-grid">
-        <div class="field">
-          <label for="photoFile">Escolher imagem</label>
-          <input
-            type="file"
-            id="photoFile"
-            accept="image/*"
-            required
-          />
-        </div>
+<header class="hero">
 
-        <div class="field">
-          <label for="photoDescription">Descrição da memória</label>
-          <textarea
-            id="photoDescription"
-            rows="4"
-            placeholder="Descreva o sentimento, a lembrança ou o instante..."
-            required
-          ></textarea>
-        </div>
+<div class="hero-frame">
 
-        <button type="submit" class="btn">Adicionar ao Álbum</button>
-      </form>
-    </section>
+<p class="hero-kicker">
+Memórias eternizadas
+</p>
 
-    <section class="section ornate-panel">
-      <div class="panel-corner tl"></div>
-      <div class="panel-corner tr"></div>
-      <div class="panel-corner bl"></div>
-      <div class="panel-corner br"></div>
 
-      <h2>Álbum</h2>
-      <div id="albumGrid" class="album-grid">
-        <article class="photo-card">
-          <div class="image-frame">
-            <img
-              src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80"
-              alt="Foto do álbum"
-            />
-          </div>
-          <div class="photo-content">
-            <p>
-              Como uma lembrança guardada entre páginas antigas, este instante ainda respira.
-            </p>
-          </div>
-        </article>
+<h1>
+Nosso Álbum
+</h1>
 
-        <article class="photo-card">
-          <div class="image-frame">
-            <img
-              src="https://images.unsplash.com/photo-1504198458649-3128b932f49b?auto=format&fit=crop&w=900&q=80"
-              alt="Foto do álbum"
-            />
-          </div>
-          <div class="photo-content">
-            <p>
-              Há silêncios que dizem mais que cartas inteiras, e imagens que não envelhecem.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
 
-    <section class="section ornate-panel">
-      <div class="panel-corner tl"></div>
-      <div class="panel-corner tr"></div>
-      <div class="panel-corner bl"></div>
-      <div class="panel-corner br"></div>
+<div class="divider"></div>
 
-      <h2>Adicionar Música</h2>
-      <form id="musicForm" class="form-grid">
-        <div class="field">
-          <label for="musicTitle">Título da música</label>
-          <input
-            type="text"
-            id="musicTitle"
-            placeholder="Ex: A nossa canção"
-            required
-          />
-        </div>
 
-        <div class="field">
-          <label for="musicLink">Link do YouTube</label>
-          <input
-            type="url"
-            id="musicLink"
-            placeholder="Cole aqui o link da música"
-            required
-          />
-        </div>
+<p class="subtitle">
 
-        <button type="submit" class="btn">Adicionar à Trilha Sonora</button>
-      </form>
-    </section>
+Entre pétalas secas, promessas sussurradas e sombras delicadas,
+este espaço guarda lembranças, imagens e canções que resistem ao tempo.
 
-    <section class="section ornate-panel">
-      <div class="panel-corner tl"></div>
-      <div class="panel-corner tr"></div>
-      <div class="panel-corner bl"></div>
-      <div class="panel-corner br"></div>
+</p>
 
-      <h2>Trilha Sonora</h2>
-      <div id="soundtrackList" class="soundtrack-list">
-        <div class="music-card">
-          <div class="music-ornament">✦</div>
-          <h3>Exemplo de canção</h3>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
-            Ouvir no YouTube
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/script.js"></script>
+</div>
+
+</header>
+
+
+
+
+
+<main class="container">
+
+
+
+<section class="section ornate-panel">
+
+
+<h2>
+Adicionar Foto
+</h2>
+
+
+
+<form id="photoForm" class="form-grid">
+
+
+<div class="field">
+
+
+<label>
+Escolher imagem
+</label>
+
+
+<input 
+type="file"
+id="photoFile"
+accept="image/*"
+required
+>
+
+
+</div>
+
+
+
+<div class="field">
+
+
+<label>
+Descrição da memória
+</label>
+
+
+<textarea
+
+id="photoDescription"
+
+rows="4"
+
+placeholder="Descreva a lembrança..."
+
+required>
+
+</textarea>
+
+
+</div>
+
+
+
+<button class="btn">
+
+Adicionar ao Álbum
+
+</button>
+
+
+</form>
+
+
+</section>
+
+
+
+
+
+
+<section class="section ornate-panel">
+
+
+<h2>
+Álbum
+</h2>
+
+
+<div 
+id="albumGrid"
+class="album-grid">
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="section ornate-panel">
+
+
+<h2>
+Adicionar Música
+</h2>
+
+
+
+<form id="musicForm" class="form-grid">
+
+
+
+<div class="field">
+
+<label>
+Título da música
+</label>
+
+
+<input
+
+id="musicTitle"
+
+type="text"
+
+required>
+
+</div>
+
+
+
+
+<div class="field">
+
+
+<label>
+Link YouTube
+</label>
+
+
+<input
+
+id="musicLink"
+
+type="url"
+
+required>
+
+
+</div>
+
+
+
+<button class="btn">
+
+Adicionar Música
+
+</button>
+
+
+</form>
+
+
+</section>
+
+
+
+
+
+
+<section class="section ornate-panel">
+
+
+<h2>
+Trilha Sonora
+</h2>
+
+
+
+<div
+
+id="soundtrackList"
+
+class="soundtrack-list">
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+</main>
+
+
+
+
+
+<script type="module" src="js/script.js"></script>
+
+
 </body>
+
+
 </html>
