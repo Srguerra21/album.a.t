@@ -69,25 +69,47 @@ return div.innerHTML;
 
 function youtubeId(url){
 
+    try{
 
-try{
-
-
-const video =
-new URL(url);
+        const video = new URL(url);
 
 
-return video.searchParams.get("v");
+        if(video.hostname.includes("youtube.com")){
+
+            if(video.searchParams.get("v")){
+                return video.searchParams.get("v");
+            }
 
 
-}
+            if(video.pathname.includes("/embed/")){
 
-catch{
+                return video.pathname
+                .split("/embed/")[1];
 
-return null;
+            }
 
-}
+        }
 
+
+
+        if(video.hostname.includes("youtu.be")){
+
+            return video.pathname
+            .replace("/","");
+
+        }
+
+
+        return null;
+
+
+    }
+
+    catch{
+
+        return null;
+
+    }
 
 }
 
@@ -433,9 +455,15 @@ ${escapeHtml(data.title)}
 
 width="100%"
 
-height="200"
+height="250"
 
 src="https://www.youtube.com/embed/${id}"
+
+title="YouTube player"
+
+frameborder="0"
+
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 
 allowfullscreen>
 
